@@ -10,10 +10,12 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'shaheen_secret'
 
 # ================== إعداد قاعدة البيانات PostgreSQL ==================
-uri = os.getenv('DATABASE_URL')
-if uri and uri.startswith('postgres://'):
+# أولوية: متغير البيئة DATABASE_URL | بديل: الرابط المباشر لـ Supabase
+DEFAULT_DB_URL = 'postgresql://postgres:Lawyer.E.Alshawaf@db.itvghuljocuxqayurxax.supabase.co:5432/postgres'
+uri = os.getenv('DATABASE_URL', DEFAULT_DB_URL)
+if uri.startswith('postgres://'):
     uri = uri.replace('postgres://', 'postgresql://', 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'sqlite:///instance/shaheen.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -210,10 +212,6 @@ def seed_data():
             Book(id=2, title="الإجراءات الجزائية", author="د. محمد سعيد", category="جزائي", status="معار", date="2026-04-25"),
         ])
     db.session.commit()
-
-with app.app_context():
-    db.create_all()
-    seed_data()
 
 # ================== دوال مساعدة ==================
 def make_list_response(model_cls):
@@ -489,3 +487,10 @@ def ask_ai():
 # ================== نقطة الدخول لـ Vercel ==================
 # Vercel يبحث عن متغير 'app'
 app = app
+
+# ================== تشغيل محلي فقط ==================
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+        seed_data()
+    app.run(debug=True)

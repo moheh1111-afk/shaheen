@@ -1,2 +1,7 @@
-.vercel
-.env*.local
+__pycache__/
+*.py[cod]
+*.class
+venv/
+.env
+*.db
+.DS_Store
