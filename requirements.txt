@@ -1,3 +1,5 @@
-Flask==3.0.2
+psycopg2-binary
+flask-sqlalchemy
 google-generativeai
-werkzeug
+python-dotenv
+Flask
