@@ -1,5 +1,4 @@
 psycopg2-binary
 flask-sqlalchemy
-google-generativeai
-python-dotenv
+google-genai
 Flask
