@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول - شركة شاهين</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-100 flex items-center justify-center h-screen" style="font-family: 'Tajawal', sans-serif;">
+    <div class="bg-white p-10 rounded-3xl shadow-xl w-96 text-center border border-slate-200">
+        <div class="bg-amber-600 text-white font-bold w-16 h-16 flex items-center justify-center rounded-2xl text-2xl mb-6 mx-auto shadow-lg">SH</div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-8">تسجيل دخول النظام</h2>
+        
+        <form action="/login_process" method="POST" class="space-y-4">
+            <input type="text" name="u_name" placeholder="اسم المستخدم" required 
+                   class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+            <input type="password" name="u_pass" placeholder="كلمة المرور" required 
+                   class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+            <button type="submit" 
+                    class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-all shadow-md">
+                دخول للنظام
+            </button>
+        </form>
+    </div>
+</body>
+</html>
